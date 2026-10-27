@@ -1,0 +1,75 @@
+.speed-test {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #fff;
+    color: #172554;
+}
+
+.speed-results {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.speed-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #dbe3ef;
+    border-radius: 8px;
+}
+
+.speed-metric strong {
+    font-size: 1.75rem;
+}
+
+.speed-metric small {
+    color: #64748b;
+}
+
+.speed-test progress {
+    width: 100%;
+}
+
+.speed-error {
+    color: #b91c1c;
+}
+
+@media (max-width: 600px) {
+    .speed-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.speed-history {
+    margin-top: 1.5rem;
+    overflow-x: auto;
+}
+
+.speed-history h3 {
+    margin-bottom: 1rem;
+}
+
+.speed-history table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.speed-history th,
+.speed-history td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #dbe3ef;
+    white-space: nowrap;
+}
+
+.speed-history th {
+    color: #475569;
+    font-size: 0.875rem;
+}
+
+.speed-history td {
+    font-variant-numeric: tabular-nums;
+}

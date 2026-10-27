@@ -1,0 +1,76 @@
+<section class="speed-test">
+    <h2>Internet Speed Test</h2>
+
+    <div class="speed-results">
+        <article class="speed-metric">
+            <span>Download</span>
+            <strong>{{ downloadSpeed() }}</strong>
+            <small>Mbps</small>
+        </article>
+
+        <article class="speed-metric">
+            <span>Upload</span>
+            <strong>{{ uploadSpeed() }}</strong>
+            <small>Mbps</small>
+        </article>
+
+        <article class="speed-metric">
+            <span>Ping</span>
+            <strong>{{ ping() }}</strong>
+            <small>ms</small>
+        </article>
+
+        <article class="speed-metric">
+            <span>Jitter</span>
+            <strong>{{ jitter() }}</strong>
+            <small>ms</small>
+        </article>
+    </div>
+
+    <progress [value]="progress()" max="100"></progress>
+    <p>Прогресс: {{ progress() }}%</p>
+
+    @if (lastTestAt()) {
+    <p>Последний тест: {{ lastTestAt() }}</p>
+    }
+
+    @if (error()) {
+    <p class="speed-error">{{ error() }}</p>
+    }
+
+    @if (running()) {
+    <button type="button" (click)="stop()">Остановить тест</button>
+    } @else {
+    <button type="button" (click)="start()">Начать тест</button>
+    }
+</section>
+
+@if (history().length > 0) {
+<section class="speed-history">
+    <h3>История тестов</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Время</th>
+                <th>Download (Mbps)</th>
+                <th>Upload (Mbps)</th>
+                <th>Ping (ms)</th>
+                <th>Jitter (ms)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (item of history(); track item.time) {
+            <tr>
+                <td>{{ item.time }}</td>
+                <td>{{ item.download }}</td>
+                <td>{{ item.upload }}</td>
+                <td>{{ item.ping }}</td>
+                <td>{{ item.jitter }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</section>
+}
