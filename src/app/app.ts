@@ -4,6 +4,7 @@ import { DownloadManager } from './downloads/download-manager';
 import { DownloadItem } from './downloads/download-item';
 import { interval, take, mergeMap, map } from 'rxjs';
 import { SpeedTest } from './speed-test/speed-test';
+import { ThemeService } from './theme.service';
 
 type Category = 'all' | 'downloading' | 'completed' | 'paused' | 'errors';
 
@@ -25,6 +26,7 @@ export class App {
   protected readonly url = signal('');
   protected readonly showAddUrl = signal(false);
   protected readonly downloadManager = inject(DownloadManager);
+  protected readonly themeService = inject(ThemeService);
   protected readonly downloads: Signal<DownloadItem[]> = toSignal(this.downloadManager.downloads$, { initialValue: [] });
   protected readonly selectedIds = signal<string[]>([]);
   protected readonly searchQuery = signal('');

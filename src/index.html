@@ -11,7 +11,89 @@
 </head>
 
 <body>
-  <app-root></app-root>
+  <app-root>
+    <!-- Элементы внутри app-root видны ТОЛЬКО во время загрузки приложения -->
+    <div class="splash-container">
+      <div class="splash-logo">
+        <svg xmlns="http://w3.org" height="48" viewBox="0 -960 960 960" width="48" fill="#3b82f6">
+          <path
+            d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+        </svg>
+      </div>
+      <div class="splash-title">Download Manager</div>
+      <div class="splash-loader">
+        <div class="splash-progress"></div>
+      </div>
+    </div>
+
+    <style>
+      .splash-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #121214;
+        /* Стартовый темный фон */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        font-family: system-ui, sans-serif;
+      }
+
+      .splash-logo {
+        animation: bounce 2s infinite ease-in-out;
+        margin-bottom: 16px;
+      }
+
+      .splash-title {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        letter-spacing: 0.5px;
+      }
+
+      .splash-loader {
+        width: 200px;
+        height: 4px;
+        background-color: #2a2a30;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .splash-progress {
+        width: 50%;
+        height: 100%;
+        background-color: #3b82f6;
+        animation: loading 1.5s infinite ease-in-out;
+        border-radius: 2px;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes loading {
+        0% {
+          margin-left: -50%;
+        }
+
+        100% {
+          margin-left: 100%;
+        }
+      }
+    </style>
+  </app-root>
 </body>
 
 </html>
